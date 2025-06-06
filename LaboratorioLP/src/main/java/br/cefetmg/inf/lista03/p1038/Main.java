@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.cefetmg.inf.lista03.p1038;
 
-/**
- *
- * @author smuu
- */
 import java.util.Scanner;
 
 class Lanche{

@@ -1,5 +1,4 @@
 package br.cefetmg.inf.lab20250602;
-import java.util.Scanner;
 
 public class FilaArray {
    int topo;

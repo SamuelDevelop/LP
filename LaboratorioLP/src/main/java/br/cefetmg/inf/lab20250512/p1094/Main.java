@@ -1,4 +1,3 @@
-
 package br.cefetmg.inf.lab20250512.p1094;
 
 import java.util.Scanner;
