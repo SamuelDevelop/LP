@@ -1,4 +1,4 @@
-package br.cefetmg.inf.lab20250602;
+package br.cefetmg.inf.lab20250602.FilaArray;
 
 public class FilaArray {
    int topo;
@@ -29,9 +29,9 @@ public class FilaArray {
        ultimo ++;
    }
    
-   int desenfileirar(){
+    Integer desenfileirar(){
        if(estaVazia()){
-           return -1; //deveria retornar erro mas como é int assumi -1 como erro
+           return null;
        }
        else{
            int retorno = vetorDinamico[topo];
