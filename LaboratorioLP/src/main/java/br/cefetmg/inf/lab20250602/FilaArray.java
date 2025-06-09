@@ -1,4 +1,5 @@
-package br.cefetmg.inf.lab20250602.FilaArray;
+
+package br.cefetmg.inf.lab20250602;
 
 public class FilaArray {
    int topo;

@@ -1,4 +1,5 @@
-package br.cefetmg.inf.lab20250602.FilaCircular;
+
+package br.cefetmg.inf.lab20250602;
 
 public class FilaCircular {
     int topo;

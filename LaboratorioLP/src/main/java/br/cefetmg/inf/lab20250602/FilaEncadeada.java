@@ -1,4 +1,4 @@
-package br.cefetmg.inf.lab20250602.FilaEncadeada;
+package br.cefetmg.inf.lab20250602;
 
 class No{
     int valor;
