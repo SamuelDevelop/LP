@@ -1,22 +1,23 @@
 
 package br.cefetmg.inf.lab20250609;
-
 class No {
     int item;
     No proximo;
+    No anterior;
 
     No(int item) {
         this.item = item;
         this.proximo = null;
+        this.anterior = null;
     }
 }
 
-public class ListaEncadeada {
+public class ListaDuplamenteEncadeada {
     int qntElementos;
     No topo;
     No fim;
 
-    ListaEncadeada() {
+    ListaDuplamenteEncadeada() {
         qntElementos = 0;
         topo = null;
         fim = null;
@@ -27,6 +28,9 @@ public class ListaEncadeada {
     }
 
     void inserirMeio(int posicao, int valor) {
+        if (posicao < 0 || posicao > qntElementos) {
+            return;
+        }
 
         No novoNo = new No(valor);
 
@@ -35,22 +39,23 @@ public class ListaEncadeada {
             fim = novoNo;
         } else if (posicao == 0) {
             novoNo.proximo = topo;
+            topo.anterior = novoNo;
             topo = novoNo;
+        } else if (posicao == qntElementos) {
+            fim.proximo = novoNo;
+            novoNo.anterior = fim;
+            fim = novoNo;
         } else {
             No aux = topo;
-            No anterior = null;
 
             for (int i = 0; i < posicao; i++) {
-                anterior = aux;
                 aux = aux.proximo;
             }
 
-            anterior.proximo = novoNo;
             novoNo.proximo = aux;
-
-            if (novoNo.proximo == null) {
-                fim = novoNo;
-            }
+            novoNo.anterior = aux.anterior;
+            aux.anterior.proximo = novoNo;
+            aux.anterior = novoNo;
         }
 
         qntElementos++;
@@ -73,25 +78,25 @@ public class ListaEncadeada {
         }
 
         No aux = topo;
-        No anterior = null;
 
         for (int i = 0; i < posicao; i++) {
-            anterior = aux;
             aux = aux.proximo;
         }
 
         int retorno = aux.item;
 
-        if (anterior == null) {
+        if (aux == topo && aux == fim) {
+            topo = null;
+            fim = null;
+        } else if (aux == topo) {
             topo = topo.proximo;
-            if (topo == null) {
-                fim = null;
-            }
+            topo.anterior = null;
+        } else if (aux == fim) {
+            fim = fim.anterior;
+            fim.proximo = null;
         } else {
-            anterior.proximo = aux.proximo;
-            if (anterior.proximo == null) {
-                fim = anterior;
-            }
+            aux.anterior.proximo = aux.proximo;
+            aux.proximo.anterior = aux.anterior;
         }
 
         qntElementos--;
@@ -152,4 +157,22 @@ public class ListaEncadeada {
         return -1;
     }
 
+    void imprimirLista() {
+        No aux = topo;
+        while (aux != null) {
+            System.out.print(aux.item + " ");
+            aux = aux.proximo;
+        }
+        System.out.println();
+    }
+
+    void imprimirReverso() {
+        No aux = fim;
+        while (aux != null) {
+            System.out.print(aux.item + " ");
+            aux = aux.anterior;
+        }
+        System.out.println();
+    }
 }
+
